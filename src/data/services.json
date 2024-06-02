@@ -1,0 +1,30 @@
+{
+    "courses": [
+      {
+        "id": 1,
+        "title": "Repair",
+        "description": "Our Repair Service ensures your equipment stays in top condition. Our experts handle repairs for all types of issues promptly and efficiently. Trust us to keep your equipment running smoothly." 
+      },
+      {
+        "id": 2,
+        "title": "Printing Solutions",
+        "description": "Providing high-quality printing services, including digital printing, offset printing, large format printing, and variable data printing."
+      },
+      {
+        "id": 3,
+        "title": "Waranty Service",
+        "description": "Our Warranty Service assures you of peace of mind. We cover defects in materials and workmanship, providing repair or replacement within the specified warranty period. Simply register your product and reach out to us for hassle-free assistance."
+      },
+      {
+        "id": 4,
+        "title": "Document Management",
+        "description": "Organizing and managing digital and physical documents, including scanning, indexing, storage, retrieval, and workflow automation."
+      },
+      {
+        "id": 5,
+        "title": "Document Security",
+        "description": "Implementing measures to secure sensitive documents and data, including encryption, access controls, and secure printing solutions."
+      }
+    ]
+  }
+  
