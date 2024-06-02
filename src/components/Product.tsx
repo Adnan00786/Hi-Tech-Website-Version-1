@@ -8,13 +8,21 @@ import SpeedDialIcon from '@mui/material/SpeedDialIcon';
 import SpeedDialAction from '@mui/material/SpeedDialAction';
 import FileCopyIcon from '@mui/icons-material/FileCopyOutlined';
 import PrintIcon from '@mui/icons-material/Print';
-import ShareIcon from '@mui/icons-material/Share';
+import CallIcon from '@mui/icons-material/Call';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import { jsPDF } from "jspdf";
+import html2canvas from 'html2canvas';
 import { useState } from 'react';
 // import SlButton from '@shoelace-style/shoelace/dist/react/button';
 import Button from '@mui/material/Button';
+
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 
 interface ProductType {
   manufacture: string;
@@ -32,6 +40,7 @@ interface ProductProps {
 const Product = ({ product }: ProductProps) => {
   const [open, setOpen] = useState(false);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<ProductType>({
     manufacture: "",
     Poster: "",
@@ -51,6 +60,10 @@ const Product = ({ product }: ProductProps) => {
       manufacture: product.manufacture,
     });
     setOpen(true);
+  };
+
+  const handleDialogClose = () => {
+    setDialogOpen(false);
   };
 
   const handleCopy = () => {
@@ -75,25 +88,27 @@ const Product = ({ product }: ProductProps) => {
     doc.setTextColor(150, 150, 150);
 
     // Adding header
-    doc.setFontSize(30);
+    doc.setFontSize(50);
     doc.setTextColor(0, 0, 0);
-    doc.text("HiTech", 20, 20);
+    doc.text("Hi-Tech", 20, 20);
 
     // Adding bullet points
     doc.setFontSize(16);
     doc.text(`• Brand: ${selectedProduct.brand}`, 20, 40);
     doc.text(`  `, 20, 50);
     doc.text(`• Title: ${selectedProduct.Title}`, 20, 60);
-    doc.text(`  `, 20, 70);
-    doc.text(`• Description: ${selectedProduct.Description}`, 20, 80);
-    doc.text(`  `, 20, 90);
-    doc.text(`• Price: INR ${selectedProduct.Price}`, 20, 100);
-    doc.text(`  `, 20, 110);
+
+    doc.text(`• Price: INR ${selectedProduct.Price}`, 20, 70);
 
     // Adding footer
     doc.setFontSize(14);
-    doc.text("Contact for better details:", 20, 120);
-    doc.text("Contact No.: +91-1234567890", 20, 140);
+    doc.text("Contact for better details:", 20, 90);
+    doc.text("Contact No.: +91-1234567890", 20, 100);
+
+    // Splitting description into paragraphs
+    doc.text(`• Description: `, 20, 120);
+    const descriptionLines = doc.splitTextToSize(selectedProduct.Description, 180);
+    doc.text(descriptionLines, 20, 130);
 
     doc.save(`${selectedProduct.brand}_${selectedProduct.Title}.pdf`);
   };
@@ -105,12 +120,22 @@ const Product = ({ product }: ProductProps) => {
     setSnackbarOpen(false);
   };
 
+  const handleDialogOpen = () => {
+    setDialogOpen(true);
+  };
+
+  const handleLocationOpen = () => {
+    const address = encodeURIComponent("Shop No: 3, 1-766, near Bharat petrol, Tirmala Arcade, Nimboliadda, Kachiguda, Hyderabad, Telangana 500027");
+    const googleMapsUrl = `https://maps.app.goo.gl/AaKHxodpF8mxhXKNA`;
+    window.open(googleMapsUrl);
+  };
   const actions = [
     { icon: <FileCopyIcon />, name: 'Copy', action: handleCopy },
     { icon: <PrintIcon />, name: 'Print', action: handlePrint },
-    { icon: <ShareIcon />, name: 'Share' },
+    { icon: <CallIcon />, name: 'Call Now', action: handleDialogOpen },
+    { icon: <LocationOnIcon />, name: 'Visit Hi-Tech', action: handleLocationOpen },
   ];
-
+  
   return (
     <>
       <Drawer
@@ -148,12 +173,12 @@ const Product = ({ product }: ProductProps) => {
         </Box>
         <ModalClose />
       </Drawer>
-
+  
       <div className="product">
         <div>
           <p>Manufacture: {product.manufacture}</p>
         </div>
-
+  
         <div>
           <Image
             src={product.Poster !== "N/A" ? product.Poster : "https://via.placeholder.com/400"}
@@ -162,24 +187,49 @@ const Product = ({ product }: ProductProps) => {
             height={400}
           />
         </div>
-
+  
         <div>
           <span>{product.brand}</span>
           <h3>{product.Title}</h3>
           <div className="fixed top-4 left-36">
             {/* <SlButton onClick={handleOpen}>More Details</SlButton> */}
-            <Button variant="contained" onClick={handleOpen}>More Details</Button>
+            <Button variant="contained" onClick={handleOpen}>More details</Button>
           </div>
         </div>
       </div>
-
+  
       <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={handleCloseSnackbar}>
         <Alert onClose={handleCloseSnackbar} severity="success" variant="filled" sx={{ width: '100%' }}>
           Product details copied to clipboard!
         </Alert>
       </Snackbar>
+  
+      <Dialog
+        fullWidth
+        maxWidth="sm"
+        open={dialogOpen}
+        onClose={handleDialogClose}
+        PaperProps={{
+          sx: {
+            backgroundColor: 'white',
+            color: 'black',
+          },
+        }}
+      >
+        <DialogTitle sx={{ backgroundColor: 'white', color: 'black' }}>Contact Now</DialogTitle>
+        <DialogContent sx={{ backgroundColor: 'white', color: 'black' }}>
+          <DialogContentText sx={{ color: 'black' }}>
+            Contact us now for better deals!
+          </DialogContentText>
+          <DialogContentText sx={{ color: 'black' }}>
+            Phone: +91-1234567890
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions sx={{ backgroundColor: 'white', color: 'black' }}>
+          <Button onClick={handleDialogClose} sx={{ color: 'black' }}>Close</Button>
+        </DialogActions>
+      </Dialog>
     </>
   );
-};
-
+}
 export default Product;
