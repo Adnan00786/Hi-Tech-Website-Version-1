@@ -13,7 +13,8 @@ import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import { jsPDF } from "jspdf";
 import { useState } from 'react';
-import SlButton from '@shoelace-style/shoelace/dist/react/button';
+// import SlButton from '@shoelace-style/shoelace/dist/react/button';
+import Button from '@mui/material/Button';
 
 interface ProductType {
   manufacture: string;
@@ -165,8 +166,9 @@ const Product: React.FC<ProductProps> = ({ product }) => {
         <div>
           <span>{product.brand}</span>
           <h3>{product.Title}</h3>
-          <div className="fixed top-4 left-40">
-            <SlButton onClick={handleOpen}>More Details</SlButton>
+          <div className="fixed top-4 left-36">
+            {/* <SlButton onClick={handleOpen}>More Details</SlButton> */}
+            <Button variant="contained" onClick={handleOpen}>More Details</Button>
           </div>
         </div>
       </div>
