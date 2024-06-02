@@ -14,12 +14,23 @@ const About = () => {
             <Image src={aboutImage} alt="About" width={600} height={400} className="w-full h-auto rounded-lg shadow-lg" />
           </div>
           <div className="lg:w-1/2 w-full text-center lg:text-left">
-            <h2 className="text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-gray-900">About Us</h2>
-            <p className="mb-4 text-lg font-light leading-relaxed">
-              Ali Industries is dedicated to delivering top-notch, efficient, and environmentally friendly vehicles at affordable prices. They prioritize innovation and incorporate the latest technologies to ensure high performance and reliability. With a strong commitment to sustainability, they actively develop eco-friendly solutions such as electric and hybrid vehicles, aiming to reduce the environmental impact of transportation. By offering effective prices, Ali Industries aims to make their vehicles accessible to a wide range of customers, contributing to the improvement of the transport sector as a whole.
+            <h1 className="text-5xl font-bold mb-4 text-green bg-clip-text bg-gradient-to-r from-black-600 to-red-900">About Us</h1>
+            <p className="mb-4 text-lg font-mono leading-relaxed">
+            At Hi-Tech, we believe in perfecting performance, one print at a time. Our journey began with a passion for delivering excellence in Xerox machines and services, and today, we stand as a leading name in the industry, trusted by businesses and individuals alike.
             </p>
-            <p className="text-lg font-light leading-relaxed">
-              The first product we are launching is Softron The Electric Scooter.
+            <br></br>
+            <h2 className='text-2xl font-bold mb-4 text-green bg-clip-text bg-gradient-to-r from-black-600 to-red-900'>Our Mission</h2>
+            <p className="text-lg font-mono leading-relaxed">
+             We are here to boost your productivity with the latest in Xerox solutions. Our goal is to exceed your expectations with high-quality products and unmatched service, ensuring every print reflects excellence.
+            </p>
+            <br></br>
+            <h2 className='text-2xl font-bold mb-4 text-green bg-clip-text bg-gradient-to-r from-black-600 to-red-900'>Why Us?</h2>
+            <p className="text-lg font-mono leading-relaxed">
+            <strong>Expertise:</strong> Our experienced team brings deep knowledge to every aspect of Xerox sales and services.
+            <br></br>
+            <strong>Innovation:</strong> We stay ahead with cutting-edge technologies for maximum efficiency.
+            <br></br>
+            <strong>Customer Focus:</strong> Your satisfaction is key. We listen and tailor solutions to fit your needs seamlessly.
             </p>
           </div>
         </div>
