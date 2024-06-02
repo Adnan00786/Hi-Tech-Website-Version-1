@@ -1,3 +1,4 @@
+"use client";
 import Image, { StaticImageData } from "next/image";
 import Box from '@mui/material/Box';
 import Drawer from '@mui/joy/Drawer';
