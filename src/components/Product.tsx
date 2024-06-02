@@ -1,5 +1,4 @@
-"use client"
-import Image, {StaticImageData} from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Box from '@mui/material/Box';
 import Drawer from '@mui/joy/Drawer';
 import ModalClose from '@mui/joy/ModalClose';
@@ -29,7 +28,7 @@ interface ProductProps {
   product: ProductType;
 }
 
-const Product: React.FC<ProductProps> = ({ product }) => {
+const Product = ({ product }: ProductProps) => {
   const [open, setOpen] = useState(false);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<ProductType>({
