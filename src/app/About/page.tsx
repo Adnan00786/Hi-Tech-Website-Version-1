@@ -8,7 +8,7 @@ const About = () => {
   return (
     <>
       <Navbar />
-      <section className="bg-gray-900 text-white py-16" id="about">
+      <section className="bg-gray-900 text-white py-16" id="About">
         <div className="container mx-auto flex flex-col lg:flex-row items-center px-4 space-y-8 lg:space-y-0 lg:space-x-8">
           <div className="lg:w-1/2 w-full mb-8">
             <Image src={aboutImage} alt="About" width={600} height={400} className="w-full h-auto rounded-lg shadow-lg" />
