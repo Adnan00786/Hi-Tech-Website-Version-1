@@ -26,7 +26,8 @@ const Footer = () => {
           <p>Hyderabad, India</p>
         </div>
         <div className="copy-right">
-          <p>&copy; Hi-Tech. All rights reserved.</p>
+          {/* <p>&copy; Hi-Tech. All rights reserved.</p> */}
+          <p>&copy; All rights reserved.</p>
         </div>
         <div className="scroll-to-top">
           <button onClick={handleScrollToTop}>
