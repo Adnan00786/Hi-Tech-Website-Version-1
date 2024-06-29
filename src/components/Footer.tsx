@@ -2,6 +2,7 @@
 import React from 'react';
 import { FaYoutube, FaFacebook, FaInstagram, FaLinkedin, FaArrowUp } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
+
 import '@/css/Footer.css';
 
 const Footer = () => {
