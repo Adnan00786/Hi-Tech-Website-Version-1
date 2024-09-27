@@ -1,5 +1,9 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+**This Website is designed only for Dark modes**
+**If Your System has Light mode set to dark theme before using**
+**This Bug is resolved in Next Projects**
+
 ## Getting Started
 
 First, run the development server:
